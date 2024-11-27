@@ -1,7 +1,8 @@
 //Boris Hermann NANA
 //DAMIBA Ismael
-//2ème année de Génie Logiciel (Promotion_2022)
-//Université Virtuelle du Burkina Faso
+//2Ã¨me annÃ©e de GÃ©nie Logiciel (Promotion_2022)
+//UniversitÃ© Virtuelle du Burkina Faso
+//Sujet 9
 
 #include <iostream>
 #include <string>
@@ -10,7 +11,7 @@
 
 using namespace std;
 
-// Structure pour représenter une date
+// Structure pour reprÃ©senter une date
 struct Date {
     int jour;
     int mois;
@@ -28,36 +29,36 @@ public:
     Abonne(string n, int id, Date date) : nom(n), identifiant(id), dateAdhesion(date) {}
 };
 
-// Classe Bibliothèque
+// Classe BibliothÃ¨que
 class Bibliotheque {
 private:
     vector<Abonne> abonnes;
-    int prochainIdentifiant = 1; // Début de l'incrémentation
+    int prochainIdentifiant = 1; // DÃ©but de l'incrÃ©mentation
 
 public:
-    // Ajouter un abonné
+    // Ajouter un abonnÃ©
     void ajouterAbonne(string nom, Date dateAdhesion) {
         Abonne nouvelAbonne(nom, prochainIdentifiant++, dateAdhesion);
         abonnes.push_back(nouvelAbonne);
-        cout << "Abonné ajouté avec succès : " << nom << " (ID: " << nouvelAbonne.identifiant << ")" << endl;
+        cout << "AbonnÃ© ajoutÃ© avec succÃ¨s : " << nom << " (ID: " << nouvelAbonne.identifiant << ")" << endl;
     }
 
-    // Gérer un emprunt
+    // GÃ©rer un emprunt
     void gererEmprunt(int id, string titreLivre, Date dateEmprunt) {
         for (auto& abonne : abonnes) {
             if (abonne.identifiant == id) {
-                abonne.historique.push_back(titreLivre + " emprunté le " +
+                abonne.historique.push_back(titreLivre + " empruntÃ© le " +
                     to_string(dateEmprunt.jour) + "/" +
                     to_string(dateEmprunt.mois) + "/" +
                     to_string(dateEmprunt.annee));
-                cout << "Livre ajouté à l'historique de " << abonne.nom << "." << endl;
+                cout << "Livre ajoutÃ© Ã  l'historique de " << abonne.nom << "." << endl;
                 return;
             }
         }
-        cout << "Abonné non trouvé avec l'ID " << id << "." << endl;
+        cout << "AbonnÃ© non trouvÃ© avec l'ID " << id << "." << endl;
     }
 
-    // Afficher l'historique d'un abonné
+    // Afficher l'historique d'un abonnÃ©
     void afficherHistorique(int id) {
         for (const auto& abonne : abonnes) {
             if (abonne.identifiant == id) {
@@ -68,18 +69,18 @@ public:
                 return;
             }
         }
-        cout << "Abonné non trouvé avec l'ID " << id << "." << endl;
+        cout << "AbonnÃ© non trouvÃ© avec l'ID " << id << "." << endl;
     }
 
-    // Afficher tous les abonnés
+    // Afficher tous les abonnÃ©s
     void afficherAbonnes() {
         ofstream fichier("abonnes.txt");
         if (!fichier.is_open()) {
-            cout << "Erreur : Impossible de créer le fichier des abonnés." << endl;
+            cout << "Erreur : Impossible de crÃ©er le fichier des abonnÃ©s." << endl;
             return;
         }
 
-        cout << "Liste des abonnés :" << endl;
+        cout << "Liste des abonnÃ©s :" << endl;
         for (const auto& abonne : abonnes) {
             cout << "- " << abonne.nom << " (ID: " << abonne.identifiant << ")" << endl;
             fichier << abonne.identifiant << ";" << abonne.nom << ";"
@@ -88,14 +89,14 @@ public:
                 << abonne.dateAdhesion.annee << endl;
         }
         fichier.close();
-        cout << "La liste des abonnés a été enregistrée dans le fichier 'abonnes.txt'." << endl;
+        cout << "La liste des abonnÃ©s a Ã©tÃ© enregistrÃ©e dans le fichier 'abonnes.txt'." << endl;
     }
 
-    // Charger les abonnés depuis un fichier
+    // Charger les abonnÃ©s depuis un fichier
     void chargerAbonnesDepuisFichier() {
         ifstream fichier("abonnes.txt");
         if (!fichier.is_open()) {
-            cout << "Aucun fichier d'abonnés trouvé. Démarrage sans données." << endl;
+            cout << "Aucun fichier d'abonnÃ©s trouvÃ©. DÃ©marrage sans donnÃ©es." << endl;
             return;
         }
 
@@ -117,22 +118,22 @@ public:
             prochainIdentifiant = max(prochainIdentifiant, id + 1);
         }
         fichier.close();
-        cout << "Données des abonnés chargées avec succès." << endl;
+        cout << "DonnÃ©es des abonnÃ©s chargÃ©es avec succÃ¨s." << endl;
     }
 };
 
 // Fonction principale avec une boucle interactive
 int main() {
     Bibliotheque biblio;
-    biblio.chargerAbonnesDepuisFichier(); // Charger les données au démarrage
+    biblio.chargerAbonnesDepuisFichier(); // Charger les donnÃ©es au dÃ©marrage
     bool continuer = true;
 
     while (continuer) {
         cout << "\n=== Menu ===\n";
-        cout << "1. Ajouter un abonné\n";
-        cout << "2. Gérer un emprunt\n";
-        cout << "3. Consulter l'historique d'un abonné\n";
-        cout << "4. Afficher tous les abonnés\n";
+        cout << "1. Ajouter un abonnÃ©\n";
+        cout << "2. GÃ©rer un emprunt\n";
+        cout << "3. Consulter l'historique d'un abonnÃ©\n";
+        cout << "4. Afficher tous les abonnÃ©s\n";
         cout << "5. Quitter\n";
         cout << "Votre choix : ";
 
@@ -141,37 +142,37 @@ int main() {
 
         switch (choix) {
         case 1: {
-            cin.ignore(); // Nettoyer le tampon pour éviter des problèmes de saisie
-            cout << "Entrez le nom de l'abonné : ";
+            cin.ignore(); // Nettoyer le tampon pour Ã©viter des problÃ¨mes de saisie
+            cout << "Entrez le nom de l'abonnÃ© : ";
             string nom;
             getline(cin, nom);
 
             Date date;
-            cout << "Entrez la date d'adhésion (jour mois année) : ";
+            cout << "Entrez la date d'adhÃ©sion (jour mois annÃ©e) : ";
             cin >> date.jour >> date.mois >> date.annee;
 
             biblio.ajouterAbonne(nom, date);
             break;
         }
         case 2: {
-            cout << "Entrez l'ID de l'abonné : ";
+            cout << "Entrez l'ID de l'abonnÃ© : ";
             int id;
             cin >> id;
 
-            cin.ignore(); // Nettoyer le tampon pour éviter des problèmes de saisie
+            cin.ignore(); // Nettoyer le tampon pour Ã©viter des problÃ¨mes de saisie
             cout << "Entrez le titre du livre : ";
             string titre;
             getline(cin, titre);
 
             Date date;
-            cout << "Entrez la date d'emprunt (jour mois année) : ";
+            cout << "Entrez la date d'emprunt (jour mois annÃ©e) : ";
             cin >> date.jour >> date.mois >> date.annee;
 
             biblio.gererEmprunt(id, titre, date);
             break;
         }
         case 3: {
-            cout << "Entrez l'ID de l'abonné : ";
+            cout << "Entrez l'ID de l'abonnÃ© : ";
             int id;
             cin >> id;
 
@@ -183,12 +184,12 @@ int main() {
             break;
         }
         case 5: {
-            cout << "Merci d'avoir utilisé le programme !" << endl;
+            cout << "Merci d'avoir utilisÃ© le programme !" << endl;
             continuer = false;
             break;
         }
         default: {
-            cout << "Choix invalide. Veuillez réessayer." << endl;
+            cout << "Choix invalide. Veuillez rÃ©essayer." << endl;
         }
         }
     }
